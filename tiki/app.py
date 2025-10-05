@@ -33,7 +33,6 @@ def webhook():
             response_text = "Please select a valid service: Flight, Movie, Bus, or Event."
 
     elif intent == "ProvideDetails":
-        # Store details in session or DB in real app
         detail = req["queryResult"]["parameters"].get("details")
         if detail:
             response_text = "Please enter date (DD-MM-YYYY)."
@@ -69,6 +68,9 @@ def webhook():
         else:
             response_text = "Incorrect PIN entered. Booking failed."
 
+    elif intent == "TickiBot":
+        response_text = "Hi! TickBot Webhook is working perfectly with Dialogflow 🎉"
+
     else:
         response_text = "Sorry, I didn't understand that. Can you please repeat?"
 
@@ -76,4 +78,4 @@ def webhook():
 
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
